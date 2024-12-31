@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="Tameran-Prototype"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[layer_names]
+
+3d_physics/layer_1="Terrain"
+3d_physics/layer_2="Objects"
+3d_physics/layer_3="Player"
+3d_physics/layer_4="NPC"
+3d_physics/layer_9="LockOn"
