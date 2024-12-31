@@ -15,6 +15,15 @@ run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Character/": "green",
+"res://Data/": "blue",
+"res://GUI/": "red",
+"res://World/": "purple"
+}
+
 [layer_names]
 
 3d_physics/layer_1="Terrain"
