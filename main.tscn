@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhm0d6eaxflxu"]
+[gd_scene load_steps=5 format=3 uid="uid://dhm0d6eaxflxu"]
 
+[ext_resource type="Script" path="res://main.gd" id="1_3jp1m"]
 [ext_resource type="PackedScene" uid="uid://cosl2a43d1r4l" path="res://World/Test/test_world.tscn" id="1_41u7l"]
 [ext_resource type="PackedScene" uid="uid://cilxb6fmta7wx" path="res://Character/Player/player.tscn" id="2_id4tg"]
 [ext_resource type="PackedScene" uid="uid://4nfhnsh216u2" path="res://Character/Camera/camera_controller.tscn" id="3_gou1f"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node"]
+script = ExtResource("1_3jp1m")
 
 [node name="Test World" parent="." instance=ExtResource("1_41u7l")]
 
