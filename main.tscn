@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhm0d6eaxflxu"]
+[gd_scene load_steps=4 format=3 uid="uid://dhm0d6eaxflxu"]
 
 [ext_resource type="PackedScene" uid="uid://cosl2a43d1r4l" path="res://World/Test/test_world.tscn" id="1_41u7l"]
 [ext_resource type="PackedScene" uid="uid://cilxb6fmta7wx" path="res://Character/Player/player.tscn" id="2_id4tg"]
+[ext_resource type="PackedScene" uid="uid://4nfhnsh216u2" path="res://Character/Camera/camera_controller.tscn" id="3_gou1f"]
 
 [node name="Main" type="Node3D"]
 
@@ -10,5 +11,4 @@
 [node name="Player" parent="." instance=ExtResource("2_id4tg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.8153)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 3.55762e-08, 0.913453, 0.406944, -7.98566e-08, 0.406944, -0.913453, 0, 3.78639, -20)
+[node name="CameraController" parent="Player" instance=ExtResource("3_gou1f")]
