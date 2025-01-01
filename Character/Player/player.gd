@@ -3,11 +3,14 @@ class_name PlayerCharacter
 
 @export var mainCamera: CameraController
 
-const SPEED = 3.0
-const JUMP_VELOCITY = 4.5
-const CHARACTER_ROTATION_RATE = 4*PI;
+const SPEED: float = 3.0 
+const JUMP_VELOCITY: float = 4.5
+const CHARACTER_ROTATION_RATE: float = 4 * PI 
+const ACCELERATION: float = 6.0
 
 var movementDirection: Vector3 = Vector3.ZERO
+var lastMovementDirection: Vector3 = Vector3.ZERO #To track last direction when stop moving (inertia)
+var movementSpeed: float = 0.0
 
 func _ready() -> void:
 	#Quit game if main camera is not ready yet
@@ -25,20 +28,20 @@ func _physics_process(delta: float) -> void:
 
 	CalculateMovement(delta)
 	if movementDirection != Vector3.ZERO:
-		velocity.x = movementDirection.x * SPEED
-		velocity.z = movementDirection.z * SPEED
+		movementSpeed = lerpf(movementSpeed, SPEED, ACCELERATION * delta)
+		velocity.x = movementDirection.x * movementSpeed
+		velocity.z = movementDirection.z * movementSpeed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		movementSpeed = lerpf(movementSpeed, 0, ACCELERATION * delta)
+		velocity.x = lastMovementDirection.x * movementSpeed
+		velocity.z = lastMovementDirection.z * movementSpeed
 
 	move_and_slide()
 	mainCamera.position = self.position
-
-	move_and_slide()
 
 func CalculateMovement(delta: float) -> void:
 	var input_dir: Vector2 = Input.get_vector("Left", "Right", "Forward", "Backward")
 	movementDirection = (mainCamera.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if movementDirection != Vector3.ZERO:
-		#var rotation_Angle: float = -transform.basis.z.signed_angle_to(movementDirection, Vector3.UP)
 		self.rotation.y = lerp_angle(self.rotation.y, atan2(-movementDirection.x, -movementDirection.z), CHARACTER_ROTATION_RATE * delta)
+		lastMovementDirection = movementDirection

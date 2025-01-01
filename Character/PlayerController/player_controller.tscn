@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7v4pyujkkf77"]
+[gd_scene load_steps=4 format=3 uid="uid://b7v4pyujkkf77"]
 
 [ext_resource type="PackedScene" uid="uid://cilxb6fmta7wx" path="res://Character/Player/player.tscn" id="1_xph5g"]
 [ext_resource type="PackedScene" uid="uid://4nfhnsh216u2" path="res://Character/Camera/camera_controller.tscn" id="2_58fye"]
+[ext_resource type="PackedScene" uid="uid://dnyixu56h1p84" path="res://GUI/Debug/debug_ui.tscn" id="3_ktnv2"]
 
 [node name="PlayerController" type="Node3D"]
 
@@ -11,3 +12,6 @@ mainCamera = NodePath("../CameraController")
 [node name="CameraController" parent="." instance=ExtResource("2_58fye")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Debug UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_ktnv2")]
+player = NodePath("../../Player")
