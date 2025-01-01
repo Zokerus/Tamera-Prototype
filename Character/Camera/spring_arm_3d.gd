@@ -12,6 +12,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if ray_cast_3d.is_colliding():
-		camera_3d.position.z = minf(ray_cast_3d.global_position.distance_to(ray_cast_3d.get_collision_point()) - 0.1, 3.0)
+		camera_3d.position.z = minf(ray_cast_3d.global_position.distance_to(ray_cast_3d.get_collision_point()) - 0.3, 3.0)
 	else:
 		camera_3d.position.z = 3

@@ -3,7 +3,7 @@ class_name PlayerCharacter
 
 @export var mainCamera: CameraController
 
-const SPEED: float = 3.0 
+const SPEED: float = 5.0 
 const JUMP_VELOCITY: float = 4.5
 const CHARACTER_ROTATION_RATE: float = 4 * PI 
 const ACCELERATION: float = 6.0

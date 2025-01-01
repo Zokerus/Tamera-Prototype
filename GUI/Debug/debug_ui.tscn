@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnyixu56h1p84"]
+[gd_scene load_steps=4 format=3 uid="uid://dnyixu56h1p84"]
 
 [ext_resource type="Script" path="res://GUI/Debug/debug_ui.gd" id="1_3b8v4"]
+[ext_resource type="Texture2D" uid="uid://dv2y0ny3ndptl" path="res://Data/Material/UI/Point.png" id="2_avlpk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hsfl"]
 bg_color = Color(0, 0, 0, 0.423529)
@@ -25,3 +26,19 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_5hsfl")
 text = "Player Position:"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_avlpk")
+stretch_mode = 3

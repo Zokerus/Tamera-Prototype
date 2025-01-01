@@ -7,12 +7,12 @@
 script = ExtResource("1_iaytv")
 
 [node name="SpringArm3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 script = ExtResource("1_ta650")
 
 [node name="RayCast3D" type="RayCast3D" parent="SpringArm3D"]
-target_position = Vector3(0, 0, 3.5)
+target_position = Vector3(0.5, 0, 3)
 collision_mask = 11
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 3)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.5, 0, 3)
