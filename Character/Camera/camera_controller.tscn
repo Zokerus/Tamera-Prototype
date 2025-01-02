@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://4nfhnsh216u2"]
+[gd_scene load_steps=2 format=3 uid="uid://4nfhnsh216u2"]
 
 [ext_resource type="Script" path="res://Character/Camera/camera_controller.gd" id="1_iaytv"]
-[ext_resource type="Script" path="res://Character/Camera/spring_arm_3d.gd" id="1_ta650"]
 
 [node name="CameraController" type="Node3D"]
 script = ExtResource("1_iaytv")
 
-[node name="SpringArm3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-script = ExtResource("1_ta650")
+[node name="vPivot" type="Node3D" parent="."]
 
-[node name="RayCast3D" type="RayCast3D" parent="SpringArm3D"]
-target_position = Vector3(0.5, 0, 3)
+[node name="SpringArm3D2" type="SpringArm3D" parent="vPivot"]
+transform = Transform3D(0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, 0.978148, 0, 2, 0)
 collision_mask = 11
+spring_length = 3.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.5, 0, 3)
+[node name="Node3D" type="Node3D" parent="vPivot/SpringArm3D2"]
+
+[node name="Camera3D" type="Camera3D" parent="vPivot/SpringArm3D2/Node3D"]
+transform = Transform3D(0.978148, 0.0538115, -0.200827, 0, 0.965926, 0.258819, 0.207912, -0.253163, 0.944818, 0, 0, 0)
