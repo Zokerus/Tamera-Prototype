@@ -1,7 +1,7 @@
 extends Node3D
 class_name CameraController
 
-@onready var spring_arm_3d: SpringArm3D = $SpringArm3D2
+@onready var spring_arm_3d: SpringArm3D = $vPivot/SpringArm3D
 @onready var v_pivot: Node3D = $vPivot
 
 @export var h_Sensetivity: float = 0.005
