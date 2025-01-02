@@ -19,8 +19,10 @@ config/icon="res://icon.svg"
 
 folder_colors={
 "res://Character/": "green",
+"res://Components/": "orange",
 "res://Data/": "blue",
 "res://GUI/": "red",
+"res://Systems/ItemSystem/": "blue",
 "res://World/": "purple"
 }
 
@@ -58,3 +60,4 @@ Right={
 3d_physics/layer_3="Player"
 3d_physics/layer_4="NPC"
 3d_physics/layer_9="LockOn"
+3d_physics/layer_10="Interactable"
