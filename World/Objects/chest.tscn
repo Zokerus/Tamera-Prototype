@@ -106,4 +106,4 @@ libraries = {
 "": SubResource("AnimationLibrary_5uwgp")
 }
 
-[connection signal="interacted" from="InteractComponent" to="." method="_open"]
+[connection signal="interacted" from="InteractComponent" to="." method="_interact"]
