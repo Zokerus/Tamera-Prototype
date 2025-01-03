@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://bywvpcpe7l3kp"]
+[gd_scene load_steps=8 format=4 uid="uid://bywvpcpe7l3kp"]
 
 [ext_resource type="Script" path="res://Systems/ItemSystem/Interactable/wood.gd" id="1_7ptgt"]
+[ext_resource type="PackedScene" uid="uid://3kn4733etmql" path="res://Components/InteractComponent/interact_component.tscn" id="2_likog"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_10flj"]
 albedo_color = Color(0.310789, 0.22494, 0.0587592, 1)
@@ -48,3 +49,5 @@ mesh = SubResource("ArrayMesh_w8dx8")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_v2kio")
+
+[node name="InteractComponent" parent="." instance=ExtResource("2_likog")]

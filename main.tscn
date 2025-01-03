@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhm0d6eaxflxu"]
+[gd_scene load_steps=5 format=3 uid="uid://dhm0d6eaxflxu"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3jp1m"]
 [ext_resource type="PackedScene" uid="uid://cosl2a43d1r4l" path="res://World/Test/test_world.tscn" id="1_41u7l"]
 [ext_resource type="PackedScene" uid="uid://b7v4pyujkkf77" path="res://Character/PlayerController/player_controller.tscn" id="3_ys4vi"]
+[ext_resource type="PackedScene" uid="uid://bywvpcpe7l3kp" path="res://Systems/ItemSystem/Interactable/wood.tscn" id="4_2n442"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3jp1m")
@@ -11,3 +12,6 @@ script = ExtResource("1_3jp1m")
 
 [node name="PlayerController" parent="." instance=ExtResource("3_ys4vi")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -18.1455)
+
+[node name="Wood" parent="." instance=ExtResource("4_2n442")]
+transform = Transform3D(-4.37114e-08, 0, -1, -0.82709, 0.562069, 3.61533e-08, 0.562069, 0.82709, -2.45688e-08, 14.5702, 4.19314, -18.1455)
