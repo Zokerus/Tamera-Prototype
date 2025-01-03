@@ -5,6 +5,7 @@ class_name DebugUI
 
 @onready var label: Label = $Label
 @onready var interactable: Label = $Interactable
+@onready var wood_number: Label = $HBoxContainer/WoodNumber
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -22,3 +23,7 @@ func SetInteractable(objectName: String) -> void:
 		interactable.show()
 	else:
 		interactable.hide()
+
+func AddWood() -> void:
+	var number: int = int(wood_number.text)
+	wood_number.text = str(number + 1)
