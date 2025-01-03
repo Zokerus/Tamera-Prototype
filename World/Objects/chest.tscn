@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://b3b3faxdiyj6h"]
+
+[ext_resource type="Script" path="res://World/Objects/chest.gd" id="1_48roa"]
+[ext_resource type="PackedScene" uid="uid://3kn4733etmql" path="res://Components/InteractComponent/interact_component.tscn" id="1_62ok4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5gck"]
+albedo_color = Color(0.310789, 0.22494, 0.0587592, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jdxcf"]
+material = SubResource("StandardMaterial3D_h5gck")
+size = Vector3(1, 0.5, 0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fpx4a"]
+points = PackedVector3Array(0.5, 0.25, 0.25, 0.5, 0.25, -0.25, -0.5, 0.25, 0.25, 0.5, -0.25, 0.25, 0.5, -0.25, -0.25, -0.5, 0.25, -0.25, -0.5, -0.25, 0.25, -0.5, -0.25, -0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_spcqt"]
+albedo_color = Color(0.447059, 0.329412, 0.101961, 1)
+
+[sub_resource type="Animation" id="Animation_0yavr"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.523599, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bovaf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_84k80"]
+resource_name = "Close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGCombiner3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5uwgp"]
+_data = {
+"Close": SubResource("Animation_84k80"),
+"Open": SubResource("Animation_0yavr"),
+"RESET": SubResource("Animation_bovaf")
+}
+
+[node name="Chest" type="AnimatableBody3D"]
+collision_layer = 514
+collision_mask = 15
+script = ExtResource("1_48roa")
+
+[node name="ChestBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+mesh = SubResource("BoxMesh_jdxcf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("ConvexPolygonShape3D_fpx4a")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.25)
+material_override = SubResource("StandardMaterial3D_spcqt")
+use_collision = true
+collision_layer = 2
+collision_mask = 15
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0.25)
+radius = 0.25
+height = 1.0
+sides = 16
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, 0.25)
+operation = 2
+size = Vector3(1.2, 0.25, 0.5)
+
+[node name="InteractComponent" parent="." instance=ExtResource("1_62ok4")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_5uwgp")
+}
+
+[connection signal="interacted" from="InteractComponent" to="." method="_open"]
