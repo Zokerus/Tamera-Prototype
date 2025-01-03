@@ -5,7 +5,6 @@ class_name CameraController
 @onready var shape_cast_3d: ShapeCast3D = $vPivot/SpringArm3D/Node3D/Camera3D/ShapeCast3D
 
 signal interactable_detected(objectName: String)
-signal interacted()
 
 @export var h_Sensetivity: float = 0.005
 @export var v_Sensetivity: float = 0.005
@@ -26,9 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("Interact"):
 		if lastDetectedObject:
-			lastDetectedObject.get_parent().queue_free()
-			interactable_detected.emit("")
-			interacted.emit()
+			lastDetectedObject.interact_with()
 
 func _process(delta: float) -> void:
 	var object: InteractComponent = Get_Interactable()

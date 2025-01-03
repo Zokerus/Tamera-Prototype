@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhm0d6eaxflxu"]
+[gd_scene load_steps=6 format=3 uid="uid://dhm0d6eaxflxu"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_3jp1m"]
 [ext_resource type="PackedScene" uid="uid://cosl2a43d1r4l" path="res://World/Test/test_world.tscn" id="1_41u7l"]
 [ext_resource type="PackedScene" uid="uid://b7v4pyujkkf77" path="res://Character/PlayerController/player_controller.tscn" id="3_ys4vi"]
 [ext_resource type="PackedScene" uid="uid://bywvpcpe7l3kp" path="res://Systems/ItemSystem/Interactable/wood.tscn" id="4_2n442"]
+[ext_resource type="PackedScene" uid="uid://b3b3faxdiyj6h" path="res://World/Objects/chest.tscn" id="5_50xj6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_3jp1m")
@@ -18,3 +19,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, -0.82709, 0.562069, 3.61533e-08, 0.
 
 [node name="Wood2" parent="." instance=ExtResource("4_2n442")]
 transform = Transform3D(-4.37114e-08, 0, -1, -0.82709, 0.562069, 3.61533e-08, 0.562069, 0.82709, -2.45688e-08, 14.5702, 4.82236, -18.1455)
+
+[node name="Chest" parent="." instance=ExtResource("5_50xj6")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.24073, 0, -5.94826)

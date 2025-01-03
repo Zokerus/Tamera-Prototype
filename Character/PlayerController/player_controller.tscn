@@ -17,4 +17,3 @@ mainCamera = NodePath("../CameraController")
 player = NodePath("../../Player")
 
 [connection signal="interactable_detected" from="CameraController" to="CanvasLayer/Debug UI" method="SetInteractable"]
-[connection signal="interacted" from="CameraController" to="CanvasLayer/Debug UI" method="AddWood"]

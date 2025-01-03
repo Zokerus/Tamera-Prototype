@@ -51,3 +51,5 @@ mesh = SubResource("ArrayMesh_w8dx8")
 shape = SubResource("CylinderShape3D_v2kio")
 
 [node name="InteractComponent" parent="." instance=ExtResource("2_likog")]
+
+[connection signal="interacted" from="InteractComponent" to="." method="_interact"]
