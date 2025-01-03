@@ -4,6 +4,7 @@ class_name DebugUI
 @export var player: PlayerCharacter
 
 @onready var label: Label = $Label
+@onready var interactable: Label = $Interactable
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -13,3 +14,11 @@ func _process(delta: float) -> void:
 	label.text += "Player Velocity: (%.2f, %.2f, %.2f)\n" % [player.velocity.x, player.velocity.y, player.velocity.z]
 	label.text += "Player Speed: %.2f\n" % [player.movementSpeed]
 	#label.text += "Movement Direction: (%.2f, %.2f)\n" % [player.movementDirection.x, player.movementDirection.z]
+
+
+func SetInteractable(objectName: String) -> void:
+	if objectName.length() > 0:
+		interactable.text = objectName
+		interactable.show()
+	else:
+		interactable.hide()

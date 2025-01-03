@@ -4,11 +4,13 @@ class_name CameraController
 @onready var v_pivot: Node3D = $vPivot
 @onready var shape_cast_3d: ShapeCast3D = $vPivot/SpringArm3D/Node3D/Camera3D/ShapeCast3D
 
-signal interactable_detected(detect: bool)
+signal interactable_detected(objectName: String)
 
 @export var h_Sensetivity: float = 0.005
 @export var v_Sensetivity: float = 0.005
 @export var Invert_YAxis: bool = false
+
+var lastDetectedObject: InteractComponent
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,19 +21,32 @@ func _unhandled_input(event: InputEvent) -> void:
 		#var mouseMotion: InputEventMouseMotion = event
 		self.rotate_y(-event.relative.x * h_Sensetivity) #turn horizontally around the player
 		v_pivot.rotate_x(-event.relative.y * v_Sensetivity) #turn vertically around the player
-		v_pivot.rotation.x = clampf(v_pivot.rotation.x, -PI*0.25, PI*0.25) 
+		v_pivot.rotation.x = clampf(v_pivot.rotation.x, -PI*0.25, PI*0.25)
+	
+	if event.is_action_pressed("Interact"):
+		if lastDetectedObject:
+			lastDetectedObject.get_parent().queue_free()
+			interactable_detected.emit("")
+			
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	var object: InteractComponent = Get_Interactable()
-	if object:
-		print(object.get_parent().name)
+	if object != lastDetectedObject:
+		if !object:
+			interactable_detected.emit("")
+		else:
+			interactable_detected.emit(object.get_parent().name)
+		lastDetectedObject = object
+		#print(object.get_parent().name)
 	
 func Get_Interactable()-> InteractComponent:
-	for i in shape_cast_3d.get_collision_count():
-		if i > 0 and shape_cast_3d.get_collider(i) is PlayerCharacter:
-			# ShapeCast3D detect the player itself
-			return null
-		if shape_cast_3d.get_collider(i).get_node_or_null("InteractComponent") is InteractComponent:
-			return shape_cast_3d.get_collider(i).get_node_or_null("InteractComponent")
+	for i in range(shape_cast_3d.get_collision_count()):
+		var collider: Object = shape_cast_3d.get_collider(i)
+		if collider:
+			if i > 0 and collider is PlayerCharacter:
+				# ShapeCast3D detect the player itself
+				return null
+			if collider.get_node_or_null("InteractComponent") is InteractComponent:
+				return collider.get_node_or_null("InteractComponent")
 	
 	return null

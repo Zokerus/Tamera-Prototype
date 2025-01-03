@@ -15,3 +15,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 
 [node name="Wood" parent="." instance=ExtResource("4_2n442")]
 transform = Transform3D(-4.37114e-08, 0, -1, -0.82709, 0.562069, 3.61533e-08, 0.562069, 0.82709, -2.45688e-08, 14.5702, 4.19314, -18.1455)
+
+[node name="Wood2" parent="." instance=ExtResource("4_2n442")]
+transform = Transform3D(-4.37114e-08, 0, -1, -0.82709, 0.562069, 3.61533e-08, 0.562069, 0.82709, -2.45688e-08, 14.5702, 4.82236, -18.1455)

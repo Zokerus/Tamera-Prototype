@@ -15,3 +15,5 @@ mainCamera = NodePath("../CameraController")
 
 [node name="Debug UI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("3_ktnv2")]
 player = NodePath("../../Player")
+
+[connection signal="interactable_detected" from="CameraController" to="CanvasLayer/Debug UI" method="SetInteractable"]
