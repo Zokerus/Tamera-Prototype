@@ -1,11 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://c1vkurm6kcchr"]
 
-[ext_resource type="Texture2D" uid="uid://b2tmk7skxc1ik" path="res://icon.svg" id="1_nhghy"]
+[ext_resource type="Script" path="res://Systems/ItemSystem/Inventory/slot.gd" id="1_arfem"]
 
 [node name="Slot" type="PanelContainer"]
 custom_minimum_size = Vector2(64, 64)
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_arfem")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -16,11 +17,11 @@ theme_override_constants/margin_bottom = 4
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("1_nhghy")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="lblQuantity" type="Label" parent="."]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
