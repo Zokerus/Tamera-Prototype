@@ -24,7 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		v_pivot.rotation.x = clampf(v_pivot.rotation.x, -PI*0.25, PI*0.25)
 	
 	if event.is_action_pressed("Interact"):
-		if lastDetectedObject:
+		if lastDetectedObject != null:
 			lastDetectedObject.interact_with()
 
 func _process(delta: float) -> void:
