@@ -1,5 +1,5 @@
 extends Resource
-class_name Item
+class_name ItemData
 
 @export var Name: String
 @export_multiline var Description: String = ""
