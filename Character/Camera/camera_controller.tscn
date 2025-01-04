@@ -19,7 +19,7 @@ spring_length = 3.0
 [node name="Camera3D" type="Camera3D" parent="vPivot/SpringArm3D/Node3D"]
 transform = Transform3D(0.978148, 0.0538115, -0.200827, 0, 0.965926, 0.258819, 0.207912, -0.253163, 0.944818, 0, 0, 0)
 
-[node name="ShapeCast3D" type="ShapeCast3D" parent="vPivot/SpringArm3D/Node3D/Camera3D"]
+[node name="InteractShapeCast" type="ShapeCast3D" parent="vPivot/SpringArm3D/Node3D/Camera3D"]
 shape = SubResource("SphereShape3D_fuso3")
 target_position = Vector3(0, 0, -5)
 max_results = 2

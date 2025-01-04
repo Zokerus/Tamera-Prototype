@@ -2,7 +2,7 @@ extends Node3D
 class_name CameraController
 
 @onready var v_pivot: Node3D = $vPivot
-@onready var shape_cast_3d: ShapeCast3D = $vPivot/SpringArm3D/Node3D/Camera3D/ShapeCast3D
+@onready var interactShapeCast: ShapeCast3D = $vPivot/SpringArm3D/Node3D/Camera3D/InteractShapeCast
 
 signal interactable_detected(objectName: String)
 
@@ -38,8 +38,8 @@ func _process(delta: float) -> void:
 		#print(object.get_parent().name)
 	
 func Get_Interactable()-> InteractComponent:
-	for i in range(shape_cast_3d.get_collision_count()):
-		var collider: Object = shape_cast_3d.get_collider(i)
+	for i in range(interactShapeCast.get_collision_count()):
+		var collider: Object = interactShapeCast.get_collider(i)
 		if collider:
 			if i > 0 and collider is PlayerCharacter:
 				# ShapeCast3D detect the player itself
