@@ -5,10 +5,6 @@ const SlotScene: PackedScene = preload("res://Systems/ItemSystem/Inventory/slot.
 
 @onready var item_grid: GridContainer = $MarginContainer/ItemGrid
 
-func _ready() -> void:
-	var inv_data: InventoryData = preload("res://SaveGame/test_inventory.tres")
-	fill_inventory(inv_data.slot_data)
-
 func fill_inventory(slot_data: Array[SlotData])-> void:
 	#clear current inventory
 	for child in item_grid.get_children():

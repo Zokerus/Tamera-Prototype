@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name PlayerCharacter
 
 @export var mainCamera: CameraController
+@export var inventory: InventoryData
 
 const SPEED: float = 5.0 
 const JUMP_VELOCITY: float = 4.5
