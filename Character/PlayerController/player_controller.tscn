@@ -23,7 +23,7 @@ inventory = ExtResource("2_0ic4s")
 player = NodePath("../../Player")
 
 [node name="InventoryInterface" parent="CanvasLayer" instance=ExtResource("4_xqgy3")]
-mouse_filter = 2
+visible = false
 script = ExtResource("7_f2l6o")
 
 [connection signal="interactable_detected" from="CameraController" to="CanvasLayer/Debug UI" method="SetInteractable"]

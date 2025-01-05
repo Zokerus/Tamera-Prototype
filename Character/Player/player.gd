@@ -13,6 +13,8 @@ var movementDirection: Vector3 = Vector3.ZERO
 var lastMovementDirection: Vector3 = Vector3.ZERO #To track last direction when stop moving (inertia)
 var movementSpeed: float = 0.0
 
+signal toggle_inventory()
+
 func _ready() -> void:
 	#Quit game if main camera is not ready yet
 	if !mainCamera:
@@ -46,3 +48,7 @@ func CalculateMovement(delta: float) -> void:
 	if movementDirection != Vector3.ZERO:
 		self.global_rotation.y = lerp_angle(self.global_rotation.y, atan2(-movementDirection.x, -movementDirection.z), CHARACTER_ROTATION_RATE * delta)
 		lastMovementDirection = movementDirection
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Inventory"):
+		toggle_inventory.emit()
