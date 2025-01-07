@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7v4pyujkkf77"]
+[gd_scene load_steps=7 format=3 uid="uid://b7v4pyujkkf77"]
 
 [ext_resource type="Script" path="res://Character/PlayerController/player_controller.gd" id="1_83ev4"]
 [ext_resource type="PackedScene" uid="uid://cilxb6fmta7wx" path="res://Character/Player/player.tscn" id="1_xph5g"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://4nfhnsh216u2" path="res://Character/Camera/camera_controller.tscn" id="2_58fye"]
 [ext_resource type="PackedScene" uid="uid://dnyixu56h1p84" path="res://GUI/Debug/debug_ui.tscn" id="3_ktnv2"]
 [ext_resource type="PackedScene" uid="uid://d4811sl8t5w6" path="res://GUI/InventoryInterface/inventory_interface.tscn" id="4_xqgy3"]
-[ext_resource type="Script" path="res://GUI/InventoryInterface/inventory_interface.gd" id="7_f2l6o"]
 
 [node name="PlayerController" type="Node3D"]
 script = ExtResource("1_83ev4")
@@ -24,6 +23,5 @@ player = NodePath("../../Player")
 
 [node name="InventoryInterface" parent="CanvasLayer" instance=ExtResource("4_xqgy3")]
 visible = false
-script = ExtResource("7_f2l6o")
 
 [connection signal="interactable_detected" from="CameraController" to="CanvasLayer/Debug UI" method="SetInteractable"]
