@@ -25,5 +25,7 @@ func set_grabbed_slot()-> void:  #may use varibles
 func on_inventory_interact(inventory_data: InventoryData, index: int, button: int)-> void:
 	if grabbed_slot_data == null and button == MOUSE_BUTTON_LEFT:
 		grabbed_slot_data = inventory_data.grab_slot_data(index)
+	elif grabbed_slot_data != null and button == MOUSE_BUTTON_LEFT:
+		grabbed_slot_data = inventory_data.drop_slot_data(grabbed_slot_data, index)
 		
 	set_grabbed_slot()

@@ -13,6 +13,8 @@ func set_slot_data(data: SlotData)-> void:
 	if data.quantity > 1:
 		lbl_quantity.text = "x%s" % [data.quantity]
 		lbl_quantity.show()
+	else:
+		lbl_quantity.hide()
 
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT) and event.is_pressed():

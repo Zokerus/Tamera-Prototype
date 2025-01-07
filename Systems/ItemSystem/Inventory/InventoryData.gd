@@ -18,3 +18,13 @@ func grab_slot_data(index: int)-> SlotData:
 		return data
 	else:
 		return null
+
+func drop_slot_data(grabbed_data: SlotData, index: int)-> SlotData:
+	var data: SlotData = slot_data[index]
+	slot_data[index] = grabbed_data
+	
+	inventory_updated.emit(self)
+	if data != null:
+		return data
+	else:
+		return null
