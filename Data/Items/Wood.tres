@@ -1,13 +1,18 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://oxle7vktypmx"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://oxle7vktypmx"]
 
 [ext_resource type="PackedScene" uid="uid://bywvpcpe7l3kp" path="res://Systems/ItemSystem/Interactable/wood.tscn" id="1_010yg"]
-[ext_resource type="Texture2D" uid="uid://ouc5e6taul3p" path="res://Data/Material/UI/ItemsIcons.tres" id="1_jt3n5"]
 [ext_resource type="Script" path="res://Systems/ItemSystem/Items/ItemData.gd" id="1_knf2o"]
+[ext_resource type="Texture2D" uid="uid://bpeslnelnlpb1" path="res://Data/Material/UI/ItemIcons.png" id="2_lswy2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3qr3"]
+atlas = ExtResource("2_lswy2")
+region = Rect2(0, 544, 32, 32)
 
 [resource]
 script = ExtResource("1_knf2o")
 Name = "Wood"
 Description = "A chunk of wood to craft, light a fire or construct buildings."
 Value = 5
-Icon = ExtResource("1_jt3n5")
+Stackable = true
+Icon = SubResource("AtlasTexture_d3qr3")
 Body = ExtResource("1_010yg")

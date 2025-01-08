@@ -12,5 +12,12 @@ func set_quantity(value: int) -> void:
 func can_merge_with(other_data: SlotData)-> bool:
 	return (item_data == other_data.item_data and item_data.Stackable)
 	
-func merge(other_data: SlotData)-> void:
+func merge(other_data: SlotData)-> void: 
 	quantity += other_data.quantity
+	
+func create_single_slot_data() -> SlotData:
+	var new_data: SlotData = duplicate()
+	new_data.quantity = 1
+	quantity -= 1
+	
+	return new_data

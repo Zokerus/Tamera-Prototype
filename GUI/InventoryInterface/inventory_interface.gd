@@ -22,10 +22,15 @@ func set_grabbed_slot()-> void:  #may use varibles
 	else:
 		grabbed_slot.hide()
 
-func on_inventory_interact(inventory_data: InventoryData, index: int, button: int)-> void:
-	if grabbed_slot_data == null and button == MOUSE_BUTTON_LEFT:
-		grabbed_slot_data = inventory_data.grab_slot_data(index)
-	elif grabbed_slot_data != null and button == MOUSE_BUTTON_LEFT:
-		grabbed_slot_data = inventory_data.drop_slot_data(grabbed_slot_data, index)
-		
+func on_inventory_interact(inventory_data: InventoryData, index: int, event: InputEvent)-> void:
+	if event.is_action_pressed("UI_Interact"):
+		if grabbed_slot_data == null:
+			grabbed_slot_data = inventory_data.grab_slot_data(index)
+		else:
+			grabbed_slot_data = inventory_data.drop_slot_data(grabbed_slot_data, index)
+	elif event.is_action_pressed("UI_Option"):
+		if grabbed_slot_data == null:
+			pass
+		else:
+			grabbed_slot_data = inventory_data.drop_single_slot_data(grabbed_slot_data, index)
 	set_grabbed_slot()

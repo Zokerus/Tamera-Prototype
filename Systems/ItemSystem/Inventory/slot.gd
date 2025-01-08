@@ -4,7 +4,7 @@ class_name Slot
 @onready var texture_rect: TextureRect = $MarginContainer/TextureRect
 @onready var lbl_quantity: Label = $lblQuantity
 
-signal slot_clicked(index: int, button: int)
+signal slot_clicked(index: int, event: InputEvent)
 
 func set_slot_data(data: SlotData)-> void:
 	texture_rect.texture = data.item_data.Icon
@@ -17,5 +17,6 @@ func set_slot_data(data: SlotData)-> void:
 		lbl_quantity.hide()
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT) and event.is_pressed():
-		slot_clicked.emit(get_index(), event.button_index)
+	#if event is InputEventMouseButton and (event.button_index == MOUSE_BUTTON_LEFT or event.button_index == MOUSE_BUTTON_RIGHT) and event.is_pressed():
+	if event.is_action_pressed("UI_Interact") or event.is_action_pressed("UI_Option") or event.is_action_pressed("UI_Interact_CTRL") or event.is_action_pressed("UI_Interact_SHIFT"):
+		slot_clicked.emit(get_index(), event)

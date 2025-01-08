@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=5 format=3 uid="uid://b88rteufic72"]
+
+[ext_resource type="PackedScene" uid="uid://bywvpcpe7l3kp" path="res://Systems/ItemSystem/Interactable/wood.tscn" id="1_1nxsh"]
+[ext_resource type="Texture2D" uid="uid://bpeslnelnlpb1" path="res://Data/Material/UI/ItemIcons.png" id="2_0b1qr"]
+[ext_resource type="Script" path="res://Systems/ItemSystem/Items/ItemData.gd" id="3_py3cc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvumm"]
+atlas = ExtResource("2_0b1qr")
+region = Rect2(0, 416, 32, 32)
+
+[resource]
+script = ExtResource("3_py3cc")
+Name = "Book"
+Description = "A old Book with a lot of knowledge froim the old world."
+Value = 150
+Stackable = true
+Icon = SubResource("AtlasTexture_yvumm")
+Body = ExtResource("1_1nxsh")
